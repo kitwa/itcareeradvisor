@@ -1,0 +1,63 @@
+<div class="row" *ngIf="member">
+    <div class="col-12">
+        <p>Votre profile</p>
+    </div>
+
+    <div class="alert alert-info col-6 text-center" *ngIf="editForm.dirty" role="alert">
+      <p>Vous avez apporté des modifications. Toutes les modifications non enregistrées seront perdues.</p>
+    </div>
+    
+
+
+    <form #editForm="ngForm" (ngSubmit)="updateMember()" class="row g-3">
+      <div class="col-md-6">
+        <label for="inputState" class="form-label">Genre</label>
+        <select id="gender" [(ngModel)]="member.gender" name="gender" class="form-select">
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
+        </select>
+      </div>
+
+      <div class="col-6">
+        <label for="phone"  class="form-label">Téléphone</label>
+        <input type="number" [(ngModel)]="member.phone" class="form-control" id="phone" name="phone" placeholder="phone">
+      </div>
+
+        <div class="col-6">
+          <label for="city"  class="form-label">Ville</label>
+          <input type="text" [(ngModel)]="member.city" class="form-control" id="city" name="city" placeholder="ville">
+        </div>
+
+        <div class="col-6">
+          <label for="country"  class="form-label">Pays</label>
+          <input type="text" [(ngModel)]="member.country"  class="form-control" id="country" name="country" placeholder="pays">
+        </div>
+
+
+
+        <div class="col-6">
+          <label for="facebook"  class="form-label">FaceBook</label>
+          <input type="text" [(ngModel)]="member.facebook"  class="form-control" id="facebook" name="facebook" placeholder="facebook">
+        </div>
+
+        <div class="col-6">
+          <label for="instagram"  class="form-label">Instagram</label>
+          <input type="text" [(ngModel)]="member.instagram"  class="form-control" id="instagram" name="instagram" placeholder="instagram">
+        </div>
+
+        <div class="col-6">
+          <label for="twitter"  class="form-label">Twitter</label>
+          <input type="text" [(ngModel)]="member.twitter"  class="form-control" id="twitter" name="twitter" placeholder="twitter">
+        </div>
+
+        <div class="col-6">
+          <label for="youtube"  class="form-label">Youtube</label>
+          <input type="text" [(ngModel)]="member.youtube"  class="form-control" id="youtube" name="youtube" placeholder="youtube">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" [disabled]="!editForm.dirty" name="submit" id="submit" class="btn btn-primary ">Enregistrer</button>
+        </div>
+      </form>
+
+    </div>

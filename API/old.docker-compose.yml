@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /etc/nginx/sites-available/docker-proxy:/etc/nginx/conf.d
+  #     - /etc/letsencrypt/live/kibokohouse.com/fullchain.pem:/etc/ssl/certs/kibokohouse.crt
+  #     - /etc/letsencrypt/live/kibokohouse.com/privkey.pem:/etc/ssl/certs/kibokohouse.key
+  #   restart: always
+
+  webapi:
+    image: dominichdocker/kibokohouse:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_DATABASE: kibokotransfer
+      MYSQL_USER: kibokouser
+      MYSQL_PASSWORD: KibokoHouse1502@
+      MYSQL_ROOT_PASSWORD: KibokoHouse1502@
+    ports:
+      - "3306:3306"
+
+
+
+
+
