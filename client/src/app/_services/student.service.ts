@@ -22,7 +22,6 @@ export class StudentService {
   }
 
   updateAcademicInformstion(appUserId: number, academicInformation: AcademicInformation) {
-    debugger
     return this.http.put(this.baseUrl + 'students/'+ appUserId + '/edit-academic-information', academicInformation).pipe(
       map(() => {
         const index = this.academicInformations.indexOf(academicInformation);

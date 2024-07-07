@@ -36,8 +36,10 @@ namespace API.Features.AcademicInformations.Queries
                 var academicInformation = await _context.AcademicInformations.Where(x => x.AppUserId == query.AppUserId).SingleOrDefaultAsync();
 
                 if(academicInformation == null){
-                    academicInformation = new AcademicInformation();
-                    academicInformation.AppUserId = query.AppUserId;
+                    academicInformation = new AcademicInformation
+                    {
+                        AppUserId = query.AppUserId
+                    };
                     _context.AcademicInformations.Add(academicInformation);
                     _context.SaveChanges();
                 }

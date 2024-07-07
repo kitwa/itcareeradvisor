@@ -63,7 +63,7 @@ namespace API.Controllers
         {
             var user = await _userManager.Users.SingleOrDefaultAsync(x => x.Email == loginDto.Email.ToLower());
 
-            if (user == null) return Unauthorized("Bad Email");
+            if (user == null) return Unauthorized("Wrong login details");
 
             if(await _userManager.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower()) == null) return Unauthorized("Wrong Student Number");
 

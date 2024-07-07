@@ -11,7 +11,7 @@ namespace API.Entities
         public int AppUserId { get; set; }
         public string CurrentDegreeProgram { get; set; }
         public string YearOfStudy { get; set; }
-        public DateOnly ExpectedGraduationDate { get; set; }
+        public DateOnly ExpectedGraduationDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public double OverallGPA { get; set; }
         public double MajorGPA { get; set; }
         public string CompletedCourses { get; set; }  // JSON string to store list of completed courses

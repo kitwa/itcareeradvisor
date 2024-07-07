@@ -11,7 +11,7 @@ namespace API.Entities
         public string Phone { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
-        public DateOnly DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public string Nationality { get; set; }
         public string LanguagesSpoken { get; set; }
         public string PersonalityTraits { get; set; }

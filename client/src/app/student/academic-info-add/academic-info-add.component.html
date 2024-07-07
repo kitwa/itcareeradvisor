@@ -8,10 +8,11 @@
   </div>
 
   <form #editForm="ngForm" (ngSubmit)="updateAcademicInformation()" class="row g-3">
+    
     <div class="col-6">
       <label for="currentDegreeProgram" class="form-label">Current Degree Program</label>
       <input type="text" [(ngModel)]="academicInformation.currentDegreeProgram" class="form-control" id="currentDegreeProgram"
-        name="currentDegreeProgram" placeholder="Current Degree Program">
+        name="currentDegreeProgram" placeholder="Current Degree Program" >
     </div>
 
     <div class="col-6">
@@ -23,7 +24,7 @@
     <div class="col-6">
       <label for="expectedGraduationDate" class="form-label">Expected Graduation Date</label>
       <input type="date" [(ngModel)]="academicInformation.expectedGraduationDate" class="form-control" id="expectedGraduationDate"
-        name="expectedGraduationDate" placeholder="Expected Graduation Date">
+        name="expectedGraduationDate" placeholder="Expected Graduation Date" >
     </div>
 
     <div class="col-6">
@@ -42,66 +43,78 @@
       <label for="completedCourses" class="form-label">Completed Courses</label>
       <input type="text" [(ngModel)]="academicInformation.completedCourses" class="form-control" id="completedCourses"
         name="completedCourses" placeholder="completedCourses">
+        <div class="text-info">Separate each course by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="currentCourses" class="form-label">Current Courses</label>
       <input type="text" [(ngModel)]="academicInformation.currentCourses" class="form-control" id="currentCourses"
         name="currentCourses" placeholder="Current Courses">
+        <div class="text-info">Separate each course by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="favoriteSubjects" class="form-label">Favorite Subjects</label>
       <input type="text" [(ngModel)]="academicInformation.favoriteSubjects" class="form-control" id="favoriteSubjects"
         name="favoriteSubjects" placeholder="Favorite Subjects">
+        <div class="text-info">Separate each subject by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="leastFavoriteSubjects" class="form-label">Least Favorite Subjects</label>
       <input type="text" [(ngModel)]="academicInformation.leastFavoriteSubjects" class="form-control" id="leastFavoriteSubjects"
         name="leastFavoriteSubjects" placeholder="Least Favorite Subjects">
+        <div class="text-info">Separate each subject by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="technicalSkills" class="form-label">Technical Skills</label>
       <input type="text" [(ngModel)]="academicInformation.technicalSkills" class="form-control" id="technicalSkills"
         name="technicalSkills" placeholder="Technical Skills">
+        <div class="text-info">Separate each skill by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="softSkills" class="form-label">Soft Skills</label>
       <input type="text" [(ngModel)]="academicInformation.softSkills" class="form-control" id="softSkills" name="softSkills"
         placeholder="Soft Skills">
+        <div class="text-info">Separate each skill by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="certifications" class="form-label">Certifications</label>
       <input type="text" [(ngModel)]="academicInformation.certifications" class="form-control" id="certifications"
         name="certifications" placeholder="Certifications">
+        <div class="text-info">Separate each certifiation by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="projects" class="form-label">Projects</label>
       <input type="text" [(ngModel)]="academicInformation.projects" class="form-control" id="projects" name="projects"
         placeholder="Projects">
+        <div class="text-info">Separate each project by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="internships" class="form-label">Internships</label>
-      <input type="text" [(ngModel)]="academicInformation.internships" class="form-control" id="internships" name="internships"
-        placeholder="Internships">
+      <textarea type="text" [(ngModel)]="academicInformation.internships" class="form-control" id="internships" name="internships"
+        placeholder="Internships"></textarea>
+        <div class="text-info">Separate each internship by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="clubsAndOrganizations" class="form-label">Clubs And Organizations</label>
-      <input type="text" [(ngModel)]="academicInformation.clubsAndOrganizations" class="form-control" id="clubsAndOrganizations"
-        name="clubsAndOrganizations" placeholder="Soft Skills">
+      <textarea type="text" [(ngModel)]="academicInformation.clubsAndOrganizations" class="form-control" id="clubsAndOrganizations"
+        name="clubsAndOrganizations" placeholder="Soft Skills"></textarea>
+        <div class="text-info">Separate each entry by a comma sign</div>
     </div>
 
     <div class="col-6">
       <label for="volunteerExperience" class="form-label">Volunteer Experience</label>
-      <input type="text" [(ngModel)]="academicInformation.volunteerExperience" class="form-control" id="volunteerExperience"
-        name="volunteerExperience" placeholder="Volunteer Experience">
+      <textarea type="text" [(ngModel)]="academicInformation.volunteerExperience" class="form-control" id="volunteerExperience"
+        name="volunteerExperience" placeholder="Volunteer Experience"></textarea>
+        <div class="text-info">Separate each experience by a comma sign</div>
+
     </div>
 
     <div class="col-6">
