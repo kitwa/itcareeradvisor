@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240628120956_InitialCreate")]
+    [Migration("20240707073417_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -21,6 +21,73 @@ namespace API.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("API.Entities.AcademicInformation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Certifications")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ClubsAndOrganizations")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CompletedCourses")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CurrentCourses")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CurrentDegreeProgram")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("ExpectedGraduationDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("FavoriteSubjects")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FeedbackOnCurriculum")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Internships")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LeastFavoriteSubjects")
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("MajorGPA")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OverallGPA")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Projects")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SoftSkills")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("TechnicalSkills")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("VolunteerExperience")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("YearOfStudy")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("AcademicInformations");
+                });
 
             modelBuilder.Entity("API.Entities.AppRole", b =>
                 {
@@ -58,18 +125,21 @@ namespace API.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
+                    b.Property<string>("Address")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Country")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("tinyint(1)");
@@ -81,23 +151,29 @@ namespace API.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Facebook")
+                    b.Property<string>("FullName")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Instagram")
+                    b.Property<string>("HobbiesAndInterests")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("LastActive")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("LanguagesSpoken")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LearningStyle")
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -110,8 +186,11 @@ namespace API.Data.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("PersonalityTraits")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("longtext");
@@ -122,18 +201,12 @@ namespace API.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Twitter")
-                        .HasColumnType("longtext");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
-
-                    b.Property<string>("Youtube")
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -160,40 +233,6 @@ namespace API.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-                });
-
-            modelBuilder.Entity("API.Entities.BlogPost", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("PhotoPublicId")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PhotoUrl")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("BlogPosts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -280,6 +319,17 @@ namespace API.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("API.Entities.AcademicInformation", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "appUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("appUser");
+                });
+
             modelBuilder.Entity("API.Entities.AppUserRole", b =>
                 {
                     b.HasOne("API.Entities.AppRole", "Role")
@@ -297,17 +347,6 @@ namespace API.Data.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("API.Entities.BlogPost", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "appUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("appUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

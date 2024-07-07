@@ -22,12 +22,6 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
-import { PropertyListComponent } from './properties/property-list/property-list.component';
-import { PropertyEditComponent } from './properties/property-edit/property-edit.component';
-import { PropertyCardComponent } from './properties/property-card/property-card.component';
-import { PhotoEditorComponent } from './properties/photo-editor/photo-editor.component';
-import { PropertyAddComponent } from './properties/property-add/property-add.component';
-import { PhotoCarouselComponent } from './properties/photo-carousel/photo-carousel.component';
 import { LoginComponent } from './login/login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
@@ -38,16 +32,9 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { ResetPasswordComponent } from './resetpassword/reset-password/reset-password.component';
 import { NewPasswordComponent } from './resetpassword/new-password/new-password.component';
-import { CityComponent } from './admin/city/city.component';
-import { PropertyTypeComponent } from './admin/property-type/property-type.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from './_services/customRouteReuseStrategy';
-import { BondRepaymentComponent } from './bonrepayment/bond-repayment/bond-repayment.component';
-import { BlogPostListComponent } from './blogpost/blog-post-list/blog-post-list.component';
-import { BlogPostAddComponent } from './blogpost/blog-post-add/blog-post-add.component';
-import { BlogPostDetailComponent } from './blogpost/blog-post-detail/blog-post-detail.component';
-import { BlogPostEditComponent } from './blogpost/blog-post-edit/blog-post-edit.component';
-import { BlogPostCardComponent } from './blogpost/blog-post-card/blog-post-card.component';
+import { AcademicInfoAddComponent } from './student/academic-info-add/academic-info-add.component';
 
 @NgModule({
   declarations: [
@@ -65,12 +52,6 @@ import { BlogPostCardComponent } from './blogpost/blog-post-card/blog-post-card.
     MemberCardComponent,
     MemberEditComponent,
     TextInputComponent,
-    PropertyListComponent,
-    PropertyEditComponent,
-    PropertyCardComponent,
-    PhotoEditorComponent,
-    PropertyAddComponent,
-    PhotoCarouselComponent,
     LoginComponent,
     MemberMessagesComponent,
     AdminPanelComponent,
@@ -79,11 +60,8 @@ import { BlogPostCardComponent } from './blogpost/blog-post-card/blog-post-card.
     RolesModalComponent,
     ResetPasswordComponent,
     NewPasswordComponent,
-    BlogPostListComponent,
-    BlogPostAddComponent,
-    BlogPostDetailComponent,
-    BlogPostEditComponent,
-    BlogPostCardComponent
+    AcademicInfoAddComponent
+
   ],
   imports: [
     BrowserModule,

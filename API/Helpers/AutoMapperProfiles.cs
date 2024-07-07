@@ -12,10 +12,10 @@ namespace API.Helpers
         {
             CreateMap<AppUser, MemberDto>();
             CreateMap<MemberUpdateDto, AppUser>();
-            CreateMap<BlogPost, BlogPostDto>();
-            CreateMap<BlogPostDto, BlogPost>();
-            CreateMap<BlogPost, BlogPostUpdateDto>();
-            CreateMap<BlogPostUpdateDto, BlogPost>();
+            CreateMap<AcademicInformation, AcademicInformationDto>();
+            CreateMap<AcademicInformationDto, AcademicInformation>();
+            CreateMap<AcademicInformation, AcademicInformationUpdateDto>();
+            CreateMap<AcademicInformationUpdateDto, AcademicInformation>();
             CreateMap<RegisterDto, AppUser>();
 
         }

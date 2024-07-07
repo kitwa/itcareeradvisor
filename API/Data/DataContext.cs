@@ -12,7 +12,7 @@ namespace API.Data
         {
         }
 
-        public DbSet<BlogPost> BlogPosts { get; set; }
+        public DbSet<AcademicInformation> AcademicInformations { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

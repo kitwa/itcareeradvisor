@@ -1,1 +1,124 @@
-<p>academic-info-add works!</p>
+<div class="row" *ngIf="academicInformation">
+  <div class="col-12">
+    <p>Academic Information</p>
+  </div>
+
+  <div class="alert alert-info col-6 text-center" *ngIf="editForm.dirty" role="alert">
+    <p>You have made changes. Any unsaved changes will be lost.</p>
+  </div>
+
+  <form #editForm="ngForm" (ngSubmit)="updateAcademicInformation()" class="row g-3">
+    <div class="col-6">
+      <label for="currentDegreeProgram" class="form-label">Current Degree Program</label>
+      <input type="text" [(ngModel)]="academicInformation.currentDegreeProgram" class="form-control" id="currentDegreeProgram"
+        name="currentDegreeProgram" placeholder="Current Degree Program">
+    </div>
+
+    <div class="col-6">
+      <label for="yearOfStudy" class="form-label">Year Of Study</label>
+      <input type="text" [(ngModel)]="academicInformation.yearOfStudy" class="form-control" id="yearOfStudy" name="yearOfStudy"
+        placeholder="Year Of Study">
+    </div>
+
+    <div class="col-6">
+      <label for="expectedGraduationDate" class="form-label">Expected Graduation Date</label>
+      <input type="date" [(ngModel)]="academicInformation.expectedGraduationDate" class="form-control" id="expectedGraduationDate"
+        name="expectedGraduationDate" placeholder="Expected Graduation Date">
+    </div>
+
+    <div class="col-6">
+      <label for="overallGPA" class="form-label">Overall GPA</label>
+      <input type="number" [(ngModel)]="academicInformation.overallGPA" class="form-control" id="overallGPA" name="overallGPA"
+        placeholder="Overall GPA">
+    </div>
+
+    <div class="col-6">
+      <label for="majorGPA" class="form-label">Major GPA</label>
+      <input type="number" [(ngModel)]="academicInformation.majorGPA" class="form-control" id="majorGPA" name="majorGPA"
+        placeholder="Major GPA">
+    </div>
+
+    <div class="col-6">
+      <label for="completedCourses" class="form-label">Completed Courses</label>
+      <input type="text" [(ngModel)]="academicInformation.completedCourses" class="form-control" id="completedCourses"
+        name="completedCourses" placeholder="completedCourses">
+    </div>
+
+    <div class="col-6">
+      <label for="currentCourses" class="form-label">Current Courses</label>
+      <input type="text" [(ngModel)]="academicInformation.currentCourses" class="form-control" id="currentCourses"
+        name="currentCourses" placeholder="Current Courses">
+    </div>
+
+    <div class="col-6">
+      <label for="favoriteSubjects" class="form-label">Favorite Subjects</label>
+      <input type="text" [(ngModel)]="academicInformation.favoriteSubjects" class="form-control" id="favoriteSubjects"
+        name="favoriteSubjects" placeholder="Favorite Subjects">
+    </div>
+
+    <div class="col-6">
+      <label for="leastFavoriteSubjects" class="form-label">Least Favorite Subjects</label>
+      <input type="text" [(ngModel)]="academicInformation.leastFavoriteSubjects" class="form-control" id="leastFavoriteSubjects"
+        name="leastFavoriteSubjects" placeholder="Least Favorite Subjects">
+    </div>
+
+    <div class="col-6">
+      <label for="technicalSkills" class="form-label">Technical Skills</label>
+      <input type="text" [(ngModel)]="academicInformation.technicalSkills" class="form-control" id="technicalSkills"
+        name="technicalSkills" placeholder="Technical Skills">
+    </div>
+
+    <div class="col-6">
+      <label for="softSkills" class="form-label">Soft Skills</label>
+      <input type="text" [(ngModel)]="academicInformation.softSkills" class="form-control" id="softSkills" name="softSkills"
+        placeholder="Soft Skills">
+    </div>
+
+    <div class="col-6">
+      <label for="certifications" class="form-label">Certifications</label>
+      <input type="text" [(ngModel)]="academicInformation.certifications" class="form-control" id="certifications"
+        name="certifications" placeholder="Certifications">
+    </div>
+
+    <div class="col-6">
+      <label for="projects" class="form-label">Projects</label>
+      <input type="text" [(ngModel)]="academicInformation.projects" class="form-control" id="projects" name="projects"
+        placeholder="Projects">
+    </div>
+
+    <div class="col-6">
+      <label for="internships" class="form-label">Internships</label>
+      <input type="text" [(ngModel)]="academicInformation.internships" class="form-control" id="internships" name="internships"
+        placeholder="Internships">
+    </div>
+
+    <div class="col-6">
+      <label for="clubsAndOrganizations" class="form-label">Clubs And Organizations</label>
+      <input type="text" [(ngModel)]="academicInformation.clubsAndOrganizations" class="form-control" id="clubsAndOrganizations"
+        name="clubsAndOrganizations" placeholder="Soft Skills">
+    </div>
+
+    <div class="col-6">
+      <label for="volunteerExperience" class="form-label">Volunteer Experience</label>
+      <input type="text" [(ngModel)]="academicInformation.volunteerExperience" class="form-control" id="volunteerExperience"
+        name="volunteerExperience" placeholder="Volunteer Experience">
+    </div>
+
+    <div class="col-6">
+      <label for="feedbackOnCurriculum" class="form-label">Feedback On Curriculum</label>
+      <textarea type="text" [(ngModel)]="academicInformation.feedbackOnCurriculum" class="form-control" id="feedbackOnCurriculum"
+        name="feedbackOnCurriculum" placeholder="Feedback On Curriculum">
+        </textarea>
+    </div>
+
+    <div class="col-md-6" hidden>
+      <input type="text" [(ngModel)]="user.id" formControlName='appUserId' class="form-control">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" [disabled]="!editForm.dirty" name="submit" id="submit"
+        class="btn btn-primary ">Save</button>
+    </div>
+  </form>
+
+</div>

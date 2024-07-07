@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../_services/account.service';
+import { User } from '../_models/user';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
+  user: User;
 
-  constructor() { }
+  constructor(private accountService: AccountService) { 
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user)
+  }
 
   ngOnInit(): void {
 

@@ -1,163 +1,346 @@
-# PROJECT OVERVIEW
-#### This project is about building an online agency website for selling or renting properties
+Design Phase
 
-#### I’m Dominique Kiboko. I’m a Full Stack Developer / .NET developer. I find C# a great language to use and it’s also backed by a great ecosystem, I love solving  problems.
+Problem:
+To predict student performance and recommend a suitable stream.
 
-# RUNNING
+Objectives:
 
-#### POSTGRES
+Specialization Recommendations: IT specialization area or career path tailored to each student's profile, academic performance, interests, and career goals.
 
-### Docker - Postgres
-#### Install docker
-https://docs.docker.com/docker-for-windows/install/
-
-#### Get Postgres Image
-https://hub.docker.com/_/postgres
-
-#### Run locally
-docker run -d postgres -e POSTGRES_USER=kibokouser -e POSTGRES_PASSWORD=KibokoHouse1502@ --volume kibokohouse-volume:/var/lib/postgresql/data -p 5432:5432  --detach postgres --name kibokohousepostgres
-
-docker run --name kibokohouse-postgres -e POSTGRES_PASSWORD=KibokoHouse1502@ -d postgres --volume kibokohouse-volume:/var/lib/postgresql/data
-
-docker run --name some-postgres -e POSTGRES_PASSWORD=KibokoHouse1502@ -d postgres
+Career Guidance: Comprehensive career guidance information, including job prospects, skill requirements, growth potential, and industry trends associated with the recommended specializations.
 
 
-#### postgres tools
-https://www.pgadmin.org/
+Visual Representation: Interactive dashboards, charts, and data visualizations enabling students to explore and analyse the underlying data and rationale behind the personalized recommendations.
+Landing Page:
+Main Page:
 
-### In API folder Run this conmmand to build the image
-
-  ##### Build client
-  ng build
- 
-  ##### Build backend
-  dotnet build
-  docker build -t dominichdocker/kibokohouse .
-
- #### run docker
-
-  docker run --rm -it -p 8080:80 dominichdocker/kibokohouse:latest
-
- #### push to docker so that we can access from the cloud flateform we are going to be using
-
- docker push dominichdocker/kibokohouse:latest
-
- #### pull on server
-
-docker-compose pull
-
-docker-compose up --force-recreate --build -d
-
-docker image prune -af
-
-  docker-compose up -d
-docker-compose down --volumes
-  docker pull dominichdocker/kibokohouse:latest
+Application and Model Architecture:
+User Interface Component: 
+This component will provide a user-friendly interface for students to input their academic performance data, interests, career goals, and other relevant information.
+The interface should be intuitive, easy to navigate, and accessible across different devices (desktop, mobile, etc.).
+Technologies: Web-based application (HTML, CSS, JavaScript), mobile app (React Native, Flutter), or desktop application (Electron, JavaFX).
+Database Component: 
+This component will store and manage the various data sources required for the recommendation system, including student profiles, academic records, industry data, and potentially the generated recommendations.
+A robust and scalable database management system (DBMS) will be required to handle the large volume of data.
+Potential technologies: SQL databases (PostgreSQL, MySQL), NoSQL databases (MongoDB, Cassandra), or cloud-based solutions (Amazon RDS, Google Cloud SQL).
 
 
- ### INSTALL DOCKER COMPOSE ON VPS Linux
+Data Processing and Feature Engineering Component: 
+This component will handle the acquisition, cleaning, preprocessing, and feature engineering of the various data sources required for the recommendation system.
+Data sources will include academic records, industry reports, job portals, and other relevant data.
+Techniques like data cleaning, handling missing values, feature scaling, and one-hot encoding may be employed.
+Technologies: Python (Pandas, NumPy, Scikit-learn), R, or other data processing libraries/frameworks.
 
-#### Download Docker Compose:
- sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+Machine Learning/AI Models: 
+This component will consist of one or more machine learning/AI models responsible for generating personalized recommendations based on the student's profile and data inputs.
+Potential models will include collaborative filtering, content-based filtering, hybrid approaches, or other techniques suitable for recommendation systems.
+Techniques like natural language processing (NLP) and sentiment analysis may also be employed to analyse textual data (e.g., job descriptions, student interests).
+Technologies: Python (Scikit-learn, TensorFlow, Keras), R, or other machine learning/AI libraries/frameworks.
 
-#### Apply executable permissions:
- sudo chmod +x /usr/local/bin/docker-compose
+Presentation Component: 
+This component will be responsible for presenting the personalized recommendations and relevant data insights to the students in an easily understandable and visually appealing manner.
+Techniques like data visualization, interactive dashboards, and user-friendly reporting may be employed.
+Technologies: specialized visualization tools (Power BI).
 
-#### Create a symbolic link:
-sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
-Verify the installation:
-docker-compose --version
-
-## DELETING Docker images 
-### Here is short and quick solution I used
-#### Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not associated with a container):
-docker system prune
-
-#### To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
-docker system prune -a
-
-
-# ADD SSL CERTIFICATE lET'S ENCRUPT
-sudo systemctl stop nginx
-sudo apt update
-sudo apt install certbot
-sudo apt install python3-certbot-nginx
-sudo certbot certonly --nginx -d kibokohouse.com -d www.kibokohouse.com
-
-
-# DEPLOYMENT TO PRODUCTION
-
-## Local preparation
-cd client
-ng build
-cd API
-dotnet build
-docker build -t dominichdocker/kibokohouse .
-docker push dominichdocker/kibokohouse:latest
-## Production deployment
-docker stop (pid API)
-docker-compose pull
-
-##### if needed you can run docker image prune -af
+Application architecture:
+Diagram in progress
+Model architecture:
 
 
 
-# HOW TO DROP A POSTGRES DATABASE USING COMMAND
-psql -h localhost -p 5432 -U your_username -d your_database
-### list db
-\l
-### switch to db
-\c databse_name;
-### close sessions
-#### get pid
-SELECT * FROM pg_stat_activity WHERE datname = 'your_database'; 
-#### kill pid
-SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'your_database';
-### drop db
-DROP DATABASE database_name;
+The above components will interact with each other to provide a seamless end-to-end experience for students seeking personalized career coaching and specialization recommendations. The specific implementation details, technologies, and integration approaches will be refined as the project progresses and more information becomes available.
+
+
+Data Processing Workflow:
+
+Data Acquisition: 
+Collect and acquire data from various sources, such as academic records (e.g., transcripts, course information), industry reports, job portals, and other relevant data sources.
+Potential data sources: University databases, public data repositories, web scraping, API integrations.
+Data Cleaning and Preprocessing: 
+Perform data cleaning tasks, such as handling missing values, removing duplicates, and addressing inconsistencies or errors in the data.
+Apply preprocessing techniques like text normalization, tokenization, and stemming/lemmatization for textual data.
+Feature Extraction and Engineering: 
+Extract relevant features from the data sources that can be used as inputs for the machine learning/AI models.
+Engineer new features by combining or transforming existing features, if necessary.
+Techniques like one-hot encoding, feature scaling, and dimensionality reduction may be employed.
+Data Transformation and Integration: 
+Transform the processed data into a format suitable for the machine learning/AI models and the database.
+Integrate the transformed data with the respective components (models and database) for analysis and storage.
+Model Training and Evaluation: 
+Train the machine learning/AI models using the processed and transformed data.
+Evaluate the performance of the models using appropriate metrics (e.g., accuracy, precision, recall, F1-score).
+Iterate and refine the models as needed to improve their performance.
+Recommendation Generation: 
+Utilize the trained models to generate personalized recommendations based on the student's profile and data inputs.
+Store the generated recommendations in the database for future retrieval and presentation.
+Data Visualization and Reporting: 
+Analyse and visualize relevant data insights, such as industry trends, job market analysis, and recommendation-related metrics.
+Generate user-friendly reports and dashboards to present the personalized recommendations and data insights to the students.
+
+
+This data processing workflow outlines the general steps involved in acquiring, processing, and integrating data, training the machine learning/AI models, generating recommendations, and presenting the results to the students. The specific implementation details and technologies used may vary based on the project requirements and resources available.
+
+
+
+Data processing workflow in progress
+Entity Relation Diagram in progress
+Database schema in progress
 
 
 
 
-## CHANGE DB TO MySQL
-#### Get MySQL Image
-https://hub.docker.com/_/mariadb
 
-#### Install Nuget 
-Pomelo.EntityFrameworkCore.MySql 
-
-#### change use of connection string in Program.cs to
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 36));
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    opt.UseMySql(connString, serverVersion);
-});
-
-#### Run locally
-
-docker run --detach --name local-mariadb --env MARIADB_ROOT_PASSWORD=Kibokotransfer1502@  -p 3306:3306 mariadb:latest 
+	
 
 
 
-# Update Angular from 14 to 16
-### get a report for angular 15
-ng update
-### update
-ng update @angular/cdk@15 @angular/cli@15 @angular/core@15 ngx-toastr --force
-### get a report for angular 16
-ng update
-### update
-ng update @angular/cdk@16 @angular/cli@16 @angular/core@16 --force
-
-### update npm package to lastest
-npm outdated
-npm i -g npm-check-updates && ncu -u && npm i -f
-### update ngx-bootstrap to 11
-npm install ngx-bootstrap@11 -g -f
-
-# change ngx gallery
-use https://ngx-gallery.netlify.app/
 
 
-D:\repos\kibokohouseapp\platforms\android\app\build\outputs\apk\debug
+
+
+
+
+
+
+
+Data Dictionary
+Personal Information Table:
+Field Name
+Description
+Data Type
+Constraints
+StudentID
+Unique identifier for each student
+INT
+PRIMARY KEY, AUTO_INCREMENT
+FullName
+Full name of the student
+VARCHAR(255)
+NOT NULL
+DateOfBirth
+Date of birth of the student
+DATE
+NOT NULL
+Age
+Age of the student
+INT
+
+
+Gender
+Gender of the student
+VARCHAR(50)
+
+
+Nationality
+Country of origin or citizenship
+VARCHAR(100)
+
+
+Email
+Email address of the student
+VARCHAR(255)
+UNIQUE, NOT NULL
+PhoneNumber
+Contact number of the student
+VARCHAR(50)
+
+
+Address
+Residential address of the student
+TEXT
+
+
+LanguagesSpoken
+Languages the student can speak fluently
+JSON
+
+
+PersonalityTraits
+Self-assessment of personality traits
+JSON
+
+
+LearningStyle
+Preferred learning style
+VARCHAR(100)
+
+
+HobbiesAndInterests
+Hobbies and non-academic interests
+JSON
+
+
+
+
+
+
+
+
+
+Academic Information Table:
+Field Name
+Description
+Data Type
+Constraints
+StudentID
+Unique identifier referencing PersonalInformation
+INT
+FOREIGN KEY REFERENCES PersonalInformation(StudentID)
+CurrentDegreeProgram
+Current degree program
+VARCHAR(255)
+
+
+YearOfStudy
+Year of study
+VARCHAR(50)
+
+
+ExpectedGraduationDate
+Expected graduation date
+DATE
+
+
+OverallGPA
+Overall Grade Point Average
+DECIMAL(3, 2)
+
+
+MajorGPA
+GPA specific to the major
+DECIMAL(3, 2)
+
+
+CompletedCourses
+List of completed courses with grades
+JSON
+
+
+CurrentCourses
+List of currently enrolled courses
+JSON
+
+
+FavoriteSubjects
+Subjects or courses the student has enjoyed the most
+JSON
+
+
+LeastFavoriteSubjects
+Subjects or courses the student has enjoyed the least
+JSON
+
+
+TechnicalSkills
+List of technical skills
+JSON
+
+
+SoftSkills
+List of soft skills
+JSON
+
+
+Certifications
+Relevant certifications
+JSON
+
+
+Projects
+Description of personal or academic projects
+JSON
+
+
+Internships
+Details of past internships
+JSON
+
+
+ClubsAndOrganizations
+Participation in student clubs or professional orgs
+JSON
+
+
+VolunteerExperience
+Relevant volunteer work
+JSON
+
+
+FeedbackOnCurriculum
+Student’s feedback on the current academic curriculum
+TEXT
+
+
+
+	
+
+
+Career Preferences Table:
+Field Name
+Description
+Data Type
+Constraints
+StudentID
+Unique identifier referencing PersonalInformation
+INT
+FOREIGN KEY REFERENCES PersonalInformation(StudentID)
+PreferredITSpecializations
+Areas of interest within IT
+JSON
+
+
+CareerGoals
+Career goals
+TEXT
+
+
+ShortTermGoals
+Short-term career goals
+TEXT
+
+
+LongTermGoals
+Long-term career goals
+TEXT
+
+
+PreferredIndustries
+Industries of interest
+JSON
+
+
+PreferredJobRoles
+Job roles of interest
+JSON
+
+
+WillingnessToRelocate
+Openness to relocating for a job
+BOOLEAN
+
+
+PreferredWorkEnvironment
+Preferred work settings
+JSON
+
+
+WorkLifeBalancePreference
+Importance of work-life balance
+VARCHAR(255)
+
+
+PreferredMethodOfRecommendations
+Preferred method of receiving recommendations
+VARCHAR(255)
+
+
+AdditionalComments
+Any other information the student wishes to provide
+TEXT
+
+
+
+
+
+
+

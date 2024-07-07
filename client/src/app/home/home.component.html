@@ -4,7 +4,9 @@
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Create your profile to get started and receive career recommendations tailored to your academic background, interests, and professional aspirations.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" routerLink='/login'>Get Started</button>
+        <button *ngIf="user == null" type="button" class="btn btn-primary btn-lg px-4 gap-3" routerLink='/login'>Get Started</button>
+        <button *ngIf="user != null" type="button" class="btn btn-primary btn-lg px-4 gap-3" routerLink='/member/edit'>Your Student Information</button>
+        <button *ngIf="user != null" type="button" class="btn btn-primary btn-lg px-4 gap-3" routerLink='/student/academicinformation'>Your Academic Information</button>
       </div>
     </div>
   </div>

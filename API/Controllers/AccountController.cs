@@ -81,7 +81,6 @@ namespace API.Controllers
             };
         }
 
-
         private async Task<bool> EmailExists(string email)
         {
             return await _userManager.Users.AnyAsync(x => x.Email == email.ToLower());
